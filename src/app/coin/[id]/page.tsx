@@ -5,12 +5,14 @@ import { SearchBar } from '@/components/search'
 import { Button } from '@/components/ui/button'
 
 interface CoinPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
-export default function CoinPage({ params }: CoinPageProps) {
+export default async function CoinPage({ params }: CoinPageProps) {
+  const { id } = await params
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
@@ -22,7 +24,7 @@ export default function CoinPage({ params }: CoinPageProps) {
         </Button>
         <SearchBar />
       </div>
-      <CoinDetails coinId={params.id} />
+      <CoinDetails coinId={id} />
     </div>
   )
 }
