@@ -1,15 +1,21 @@
-import { ModeToggle } from '@/components/theme-toggle'
+import { CoinList } from '@/components/coin-list'
+import { SearchBar } from '@/components/search'
 
 export default function Home() {
   return (
-    <div className="flex min-h-svh w-full flex-col items-center justify-center gap-2">
-      <div className="text-center">
-        <h1>Crypto Dash</h1>
-        <p>A dashboard with the top 20 crypto</p>
+    <div className="space-y-6">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h1 className="font-bold text-3xl tracking-tight">
+            Top Cryptocurrencies
+          </h1>
+          <p className="text-muted-foreground">
+            Track the top 20 cryptocurrencies by market capitalization
+          </p>
+        </div>
+        <SearchBar />
       </div>
-      <div className="absolute top-2 right-2">
-        <ModeToggle />
-      </div>
+      <CoinList />
     </div>
   )
 }
