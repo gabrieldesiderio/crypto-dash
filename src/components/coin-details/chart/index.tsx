@@ -16,9 +16,10 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
+import { Skeleton } from '@/components/ui/skeleton'
 import { getCoinChart } from '@/http/get-coin-chart'
 import { formatCurrency } from '@/utils/currency'
-import { Skeleton } from '../ui/skeleton'
+import { CoinChartError } from './error'
 
 export const description = 'A linear line chart'
 
@@ -54,10 +55,6 @@ export function CoinChart({ coinId }: CoinChartProps) {
     }))
   }, [data])
 
-  if (isError) {
-    return <p>data unavailable</p>
-  }
-
   return (
     <Card>
       <CardHeader>
@@ -66,42 +63,45 @@ export function CoinChart({ coinId }: CoinChartProps) {
       </CardHeader>
       <CardContent>
         {isLoading && <Skeleton className="aspect-video w-full" />}
-        <ChartContainer config={chartConfig}>
-          <LineChart
-            accessibilityLayer
-            data={formattedChartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              axisLine={false}
-              dataKey="date"
-              tickLine={false}
-              tickMargin={8}
-            />
-            <YAxis
-              axisLine={false}
-              dataKey="price"
-              tickFormatter={(value) => formatCurrency(value)}
-              tickLine={false}
-              tickMargin={4}
-            />
-            <ChartTooltip
-              content={<ChartTooltipContent hideLabel />}
-              cursor={true}
-            />
-            <Line
-              dataKey="price"
-              dot={false}
-              stroke="var(--color-price)"
-              strokeWidth={2}
-              type="linear"
-            />
-          </LineChart>
-        </ChartContainer>
+        {isError && <CoinChartError coinId={coinId} />}
+        {!(isLoading || isError) && (
+          <ChartContainer config={chartConfig}>
+            <LineChart
+              accessibilityLayer
+              data={formattedChartData}
+              margin={{
+                left: 12,
+                right: 12,
+              }}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                axisLine={false}
+                dataKey="date"
+                tickLine={false}
+                tickMargin={8}
+              />
+              <YAxis
+                axisLine={false}
+                dataKey="price"
+                tickFormatter={(value) => formatCurrency(value)}
+                tickLine={false}
+                tickMargin={4}
+              />
+              <ChartTooltip
+                content={<ChartTooltipContent hideLabel />}
+                cursor={true}
+              />
+              <Line
+                dataKey="price"
+                dot={false}
+                stroke="var(--color-price)"
+                strokeWidth={2}
+                type="linear"
+              />
+            </LineChart>
+          </ChartContainer>
+        )}
       </CardContent>
     </Card>
   )

@@ -26,7 +26,9 @@
         "noNestedTernary": "off"
       },
       "suspicious": {
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noConsole": "off",
+        "noShadowRestrictedNames": "off"
       }
     }
   }

@@ -1,6 +1,8 @@
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { CoinDetails } from '@/components/coin-details'
+import { CoinDetailsSketeton } from '@/components/coin-details/skeleton'
 import { SearchBar } from '@/components/search'
 import { Button } from '@/components/ui/button'
 
@@ -24,7 +26,9 @@ export default async function CoinPage({ params }: CoinPageProps) {
         </Button>
         <SearchBar />
       </div>
-      <CoinDetails coinId={id} />
+      <Suspense fallback={<CoinDetailsSketeton />}>
+        <CoinDetails coinId={id} />
+      </Suspense>
     </div>
   )
 }

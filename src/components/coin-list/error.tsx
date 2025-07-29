@@ -8,9 +8,9 @@ export function CoinListError() {
     <Alert variant="destructive">
       <AlertCircle className="h-4 w-4" />
       <AlertTitle>An unexpected error occurred</AlertTitle>
-      <AlertDescription className="flex items-center justify-between">
+      <AlertDescription className="mt-3">
         <Link href="/" passHref>
-          <Button className="ml-2 bg-transparent" size="sm" variant="outline">
+          <Button className="bg-transparent" size="sm" variant="outline">
             <RefreshCw className="mr-1 h-3 w-3" />
             Try again
           </Button>

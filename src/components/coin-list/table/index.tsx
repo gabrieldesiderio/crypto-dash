@@ -10,10 +10,10 @@ export function CoinListTable({ coins }: CoinListTableProps) {
   return (
     <Card>
       <CardHeader className="pb-3">
-        <div className="grid grid-cols-10 gap-4 font-medium text-muted-foreground text-sm md:grid-cols-14">
+        <div className="grid grid-cols-8 gap-4 font-medium text-muted-foreground text-sm md:grid-cols-12">
           <div className="col-span-1 text-center">#</div>
-          <div className="col-span-4">Coin</div>
-          <div className="col-span-3 text-right">Price</div>
+          <div className="col-span-3">Coin</div>
+          <div className="col-span-2 text-right">Price</div>
           <div className="col-span-2 text-right">24h</div>
           <div className="col-span-2 hidden text-right md:block">
             Market Cap

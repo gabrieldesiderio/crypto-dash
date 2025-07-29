@@ -24,6 +24,8 @@ export function CoinDetailsSketeton() {
           </Card>
         ))}
       </div>
+
+      <Skeleton className="aspect-video w-full" />
     </div>
   )
 }

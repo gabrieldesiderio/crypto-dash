@@ -16,7 +16,7 @@ export function CoinListItem({ crypto }: CoinListItemProps) {
 
   return (
     <Link
-      className="grid cursor-pointer grid-cols-10 gap-4 p-4 transition-colors hover:bg-muted/50 md:grid-cols-14"
+      className="grid cursor-pointer grid-cols-8 gap-4 p-4 transition-colors hover:bg-muted/50 md:grid-cols-12"
       href={`/coin/${crypto.id}`}
     >
       <div className="col-span-1 flex items-center justify-center">
@@ -25,7 +25,7 @@ export function CoinListItem({ crypto }: CoinListItemProps) {
         </span>
       </div>
 
-      <div className="col-span-4 flex items-center gap-3">
+      <div className="col-span-3 flex items-center gap-3">
         <Image
           alt={crypto.name}
           className="size-8 rounded-full"
@@ -41,7 +41,7 @@ export function CoinListItem({ crypto }: CoinListItemProps) {
         </div>
       </div>
 
-      <div className="col-span-3 flex items-center justify-end">
+      <div className="col-span-2 flex items-center justify-end">
         <span className="font-semibold">
           {formatCurrency(crypto.current_price)}
         </span>
